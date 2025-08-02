@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1doxp1fut80f"]
+[gd_scene load_steps=8 format=3 uid="uid://c1doxp1fut80f"]
 
 [ext_resource type="PackedScene" uid="uid://4f7xcgxce64c" path="res://player.tscn" id="1_kiaur"]
+[ext_resource type="Script" uid="uid://ci4fq6f615xnv" path="res://area2.gd" id="1_mwsi7"]
 [ext_resource type="Script" uid="uid://dmhs7bk70cnd8" path="res://to_area_1.gd" id="2_r3non"]
 [ext_resource type="Script" uid="uid://dmjn062fssae" path="res://to_area_3.gd" id="3_pcixt"]
 
@@ -14,8 +15,12 @@ height = 1080.0
 size = Vector2(1920, 40)
 
 [node name="Area2" type="Node"]
+script = ExtResource("1_mwsi7")
 
-[node name="StartPosition" type="Marker2D" parent="."]
+[node name="PositionFromArea3" type="Marker2D" parent="."]
+position = Vector2(960, 1000)
+
+[node name="PositionFromArea1" type="Marker2D" parent="."]
 position = Vector2(50, 540)
 
 [node name="Player" parent="." instance=ExtResource("1_kiaur")]
