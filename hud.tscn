@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbg3glgl12ab3"]
+
+[ext_resource type="Script" uid="uid://b6iq44djv4k3m" path="res://menu.gd" id="1_37p78"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_37p78")
+
+[connection signal="start_game" from="." to="." method="new_game"]

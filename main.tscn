@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://bn8k6mpau813g"]
+
+[ext_resource type="Script" uid="uid://c6uy5if5ekfoi" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://cbg3glgl12ab3" path="res://hud.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://4f7xcgxce64c" path="res://player.tscn" id="3_1bvp3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_h2yge"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_ig7tw")
+
+[node name="StartPosition" type="Marker2D" parent="."]
+
+[node name="Menu" parent="." instance=ExtResource("2_h2yge")]
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MarginContainer"]
+layout_mode = 2
+
+[node name="Start" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="Player" parent="." instance=ExtResource("3_1bvp3")]
+
+[node name="CoinCount" type="Label" parent="."]
+offset_left = 391.0
+offset_top = 16.0
+offset_right = 452.0
+offset_bottom = 39.0
+text = "Coins: 0"
+label_settings = SubResource("LabelSettings_h2yge")
+
+[node name="Health" type="Label" parent="."]
+offset_left = 115.0
+offset_top = 18.0
+offset_right = 167.0
+offset_bottom = 41.0
+text = "Health: 5"
+
+[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/Start" to="Menu" method="_on_start_pressed"]

@@ -4,6 +4,11 @@ signal hit
 @export var speed = 400 # How fast the player will move (pixels/sec).
 var screen_size # Size of the game window.
 
+var health = 5
+@onready var health_label = $"../Health"
+var coin_counter = 0
+@onready var coin_label = $CoinCount
+
 func _ready():
 	screen_size = get_viewport_rect().size
 	#hide()
@@ -37,3 +42,12 @@ func start(pos):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
+
+func set_coin(new_coin_count: int) -> void:
+	coin_counter = new_coin_count
+	coin_label.text = "Coin Count: " + str(coin_counter)
+	
+
+func set_health(new_health: int) -> void:
+	health = new_health
+	health_label.text = "Health: " + str(health)
