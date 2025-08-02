@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://bn8k6mpau813g"]
+
+[ext_resource type="Script" uid="uid://cm3dffbpnkj2k" path="res://to_area_2.gd" id="2_gipmx"]
+[ext_resource type="PackedScene" uid="uid://4f7xcgxce64c" path="res://player.tscn" id="3_1bvp3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_h2yge"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p2kkb"]
+radius = 16.0
+height = 1080.0
+
+[node name="Area1" type="Node"]
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(0, 540)
+
+[node name="Player" parent="." instance=ExtResource("3_1bvp3")]
+position = Vector2(0, 540)
+
+[node name="CoinCount" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 40.0
+offset_right = 77.0
+offset_bottom = 63.0
+text = "Coins: 0"
+label_settings = SubResource("LabelSettings_h2yge")
+metadata/_edit_use_anchors_ = true
+
+[node name="Health" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 86.0
+offset_bottom = 39.0
+text = "Health: 5"
+metadata/_edit_use_anchors_ = true
+
+[node name="ToArea2" type="Area2D" parent="."]
+position = Vector2(1920, 540)
+script = ExtResource("2_gipmx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToArea2"]
+shape = SubResource("CapsuleShape2D_p2kkb")
+
+[connection signal="body_entered" from="ToArea2" to="ToArea2" method="_on_body_entered"]
+[connection signal="body_exited" from="ToArea2" to="ToArea2" method="_on_body_exited"]

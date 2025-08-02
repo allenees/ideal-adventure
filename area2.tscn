@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://c1doxp1fut80f"]
+
+[ext_resource type="PackedScene" uid="uid://4f7xcgxce64c" path="res://player.tscn" id="1_kiaur"]
+[ext_resource type="Script" uid="uid://dmhs7bk70cnd8" path="res://to_area_1.gd" id="2_r3non"]
+[ext_resource type="Script" uid="uid://dmjn062fssae" path="res://to_area_3.gd" id="3_pcixt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pcixt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mwsi7"]
+radius = 16.0
+height = 1080.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3non"]
+size = Vector2(1920, 40)
+
+[node name="Area2" type="Node"]
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(50, 540)
+
+[node name="Player" parent="." instance=ExtResource("1_kiaur")]
+position = Vector2(50, 540)
+
+[node name="CoinCount" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 40.0
+offset_right = 77.0
+offset_bottom = 63.0
+text = "Coins: 0"
+label_settings = SubResource("LabelSettings_pcixt")
+metadata/_edit_use_anchors_ = true
+
+[node name="Health" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 86.0
+offset_bottom = 39.0
+text = "Health: 5"
+metadata/_edit_use_anchors_ = true
+
+[node name="ToArea1" type="Area2D" parent="."]
+position = Vector2(0, 540)
+script = ExtResource("2_r3non")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToArea1"]
+shape = SubResource("CapsuleShape2D_mwsi7")
+
+[node name="ToArea3" type="Area2D" parent="."]
+position = Vector2(960, 1080)
+script = ExtResource("3_pcixt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToArea3"]
+shape = SubResource("RectangleShape2D_r3non")
+
+[connection signal="body_entered" from="ToArea1" to="ToArea1" method="_on_body_entered"]
+[connection signal="body_exited" from="ToArea1" to="ToArea1" method="_on_body_exited"]
+[connection signal="body_entered" from="ToArea3" to="ToArea3" method="_on_body_entered"]
+[connection signal="body_exited" from="ToArea3" to="ToArea3" method="_on_body_exited"]

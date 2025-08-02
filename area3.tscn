@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlecrr4i8un8e"]
+
+[ext_resource type="PackedScene" uid="uid://4f7xcgxce64c" path="res://player.tscn" id="1_62fpu"]
+[ext_resource type="Script" uid="uid://cm3dffbpnkj2k" path="res://to_area_2.gd" id="2_62fpu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3ubfp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hn7vt"]
+size = Vector2(1920, 40)
+
+[node name="Area3" type="Node"]
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(960, 50)
+
+[node name="Player" parent="." instance=ExtResource("1_62fpu")]
+position = Vector2(960, 50)
+
+[node name="CoinCount" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 40.0
+offset_right = 77.0
+offset_bottom = 63.0
+text = "Coins: 0"
+label_settings = SubResource("LabelSettings_3ubfp")
+metadata/_edit_use_anchors_ = true
+
+[node name="Health" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 86.0
+offset_bottom = 39.0
+text = "Health: 5"
+metadata/_edit_use_anchors_ = true
+
+[node name="ToArea2" type="Area2D" parent="."]
+position = Vector2(960, 0)
+script = ExtResource("2_62fpu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToArea2"]
+shape = SubResource("RectangleShape2D_hn7vt")
+
+[connection signal="body_entered" from="ToArea2" to="ToArea2" method="_on_body_entered"]
+[connection signal="body_exited" from="ToArea2" to="ToArea2" method="_on_body_exited"]
