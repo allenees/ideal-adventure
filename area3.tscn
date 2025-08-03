@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dlecrr4i8un8e"]
+[gd_scene load_steps=8 format=3 uid="uid://dlecrr4i8un8e"]
 
 [ext_resource type="PackedScene" uid="uid://4f7xcgxce64c" path="res://player.tscn" id="1_62fpu"]
 [ext_resource type="Script" uid="uid://qu53l8kn2co2" path="res://area3.gd" id="1_t78u7"]
 [ext_resource type="Script" uid="uid://b1m1dlpvk7ahg" path="res://to_area_2_from_3.gd" id="3_t78u7"]
+[ext_resource type="PackedScene" uid="uid://dvceqns6wldpg" path="res://squirrel.tscn" id="4_hn7vt"]
+[ext_resource type="PackedScene" uid="uid://2pvwr0o3ubfo" path="res://rabbit.tscn" id="5_s16gk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3ubfp"]
 
@@ -41,6 +43,12 @@ script = ExtResource("3_t78u7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ToArea2From3"]
 shape = SubResource("RectangleShape2D_hn7vt")
+
+[node name="Squirrel" parent="." instance=ExtResource("4_hn7vt")]
+position = Vector2(1258, 202)
+
+[node name="Rabbit" parent="." instance=ExtResource("5_s16gk")]
+position = Vector2(677, 716)
 
 [connection signal="body_entered" from="ToArea2From3" to="ToArea2From3" method="_on_body_entered"]
 [connection signal="body_exited" from="ToArea2From3" to="ToArea2From3" method="_on_body_exited"]

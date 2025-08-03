@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1doxp1fut80f"]
+[gd_scene load_steps=10 format=3 uid="uid://c1doxp1fut80f"]
 
 [ext_resource type="PackedScene" uid="uid://4f7xcgxce64c" path="res://player.tscn" id="1_kiaur"]
 [ext_resource type="Script" uid="uid://ci4fq6f615xnv" path="res://area2.gd" id="1_mwsi7"]
 [ext_resource type="Script" uid="uid://dmhs7bk70cnd8" path="res://to_area_1.gd" id="2_r3non"]
 [ext_resource type="Script" uid="uid://dmjn062fssae" path="res://to_area_3.gd" id="3_pcixt"]
+[ext_resource type="PackedScene" uid="uid://dvceqns6wldpg" path="res://squirrel.tscn" id="5_gwfv5"]
+[ext_resource type="PackedScene" uid="uid://rkwckgs1itdc" path="res://robin.tscn" id="6_kk0cs"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pcixt"]
 
@@ -18,7 +20,7 @@ size = Vector2(1920, 40)
 script = ExtResource("1_mwsi7")
 
 [node name="PositionFromArea3" type="Marker2D" parent="."]
-position = Vector2(960, 1000)
+position = Vector2(960, 950)
 
 [node name="PositionFromArea1" type="Marker2D" parent="."]
 position = Vector2(50, 540)
@@ -56,6 +58,12 @@ script = ExtResource("3_pcixt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ToArea3"]
 shape = SubResource("RectangleShape2D_r3non")
+
+[node name="Robin" parent="." instance=ExtResource("6_kk0cs")]
+position = Vector2(694, 955)
+
+[node name="Squirrel" parent="." instance=ExtResource("5_gwfv5")]
+position = Vector2(368, 804)
 
 [connection signal="body_entered" from="ToArea1" to="ToArea1" method="_on_body_entered"]
 [connection signal="body_exited" from="ToArea1" to="ToArea1" method="_on_body_exited"]

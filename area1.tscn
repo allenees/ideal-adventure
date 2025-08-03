@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bn8k6mpau813g"]
+[gd_scene load_steps=7 format=3 uid="uid://bn8k6mpau813g"]
 
 [ext_resource type="Script" uid="uid://dam35fo78rp7e" path="res://area1.gd" id="1_mxcsi"]
 [ext_resource type="Script" uid="uid://cm3dffbpnkj2k" path="res://to_area_2_from_1.gd" id="2_gipmx"]
 [ext_resource type="PackedScene" uid="uid://4f7xcgxce64c" path="res://player.tscn" id="3_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://2pvwr0o3ubfo" path="res://rabbit.tscn" id="4_kbmuc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_h2yge"]
 
@@ -45,6 +46,9 @@ script = ExtResource("2_gipmx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ToArea2From1"]
 shape = SubResource("CapsuleShape2D_p2kkb")
+
+[node name="Rabbit" parent="." instance=ExtResource("4_kbmuc")]
+position = Vector2(1531, 692)
 
 [connection signal="body_entered" from="ToArea2From1" to="ToArea2From1" method="_on_body_entered"]
 [connection signal="body_exited" from="ToArea2From1" to="ToArea2From1" method="_on_body_exited"]

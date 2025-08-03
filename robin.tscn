@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://rkwckgs1itdc"]
+
+[ext_resource type="Script" uid="uid://bpri5j7s43r0x" path="res://robin.gd" id="1_17gyi"]
+[ext_resource type="Texture2D" uid="uid://lyca88xhxus" path="res://art/robin_1.png" id="1_h0q10"]
+[ext_resource type="Texture2D" uid="uid://dqswjxn6vfbva" path="res://art/robin_2.png" id="2_17gyi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d1s7o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_h0q10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_17gyi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o4ybg"]
+radius = 66.0
+height = 132.0
+
+[node name="Robin" type="Area2D"]
+script = ExtResource("1_17gyi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_d1s7o")
+frame_progress = 0.811507
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_o4ybg")

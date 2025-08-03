@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://2pvwr0o3ubfo"]
+
+[ext_resource type="Script" uid="uid://dnodqotj5xrjv" path="res://rabbit.gd" id="1_bmu3n"]
+[ext_resource type="Texture2D" uid="uid://bf6rntft5uhv3" path="res://art/rabbit_1.png" id="2_bmu3n"]
+[ext_resource type="Texture2D" uid="uid://de1au4jucxf43" path="res://art/rabbit_2.png" id="3_bsnlv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bsnlv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bmu3n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bsnlv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_msxim"]
+radius = 66.0
+height = 132.0
+
+[node name="Rabbit" type="Area2D"]
+script = ExtResource("1_bmu3n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bsnlv")
+frame_progress = 0.864961
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_msxim")

@@ -37,8 +37,10 @@ func _process(delta):
 
 
 func _on_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
-	# Enters new scene with RPG elements
+	
+	Global.next_spawn_point_name = "RPG"
+	get_tree().change_scene_to_file("res://RPG.tscn")
+
 
 func start(pos):
 	position = pos
@@ -48,8 +50,10 @@ func start(pos):
 func set_coin(new_coin_count: int) -> void:
 	coin_counter = new_coin_count
 	coin_label.text = "Coin Count: " + str(coin_counter)
+	Global.coin_count = new_coin_count
 	
 
 func set_health(new_health: int) -> void:
 	health = new_health
 	health_label.text = "Health: " + str(health)
+	Global.player_health = new_health

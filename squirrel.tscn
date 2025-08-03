@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvceqns6wldpg"]
+
+[ext_resource type="Texture2D" uid="uid://bji8o7hrt0ubb" path="res://art/squirrel_1.png" id="1_k138s"]
+[ext_resource type="Script" uid="uid://dtlpu4a6s4njo" path="res://squirrel.gd" id="1_mrhax"]
+[ext_resource type="Texture2D" uid="uid://ctp3gpgrjbaha" path="res://art/squirrel_2.png" id="2_mrhax"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6shud"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_k138s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mrhax")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_inqfv"]
+radius = 66.0
+height = 132.0
+
+[node name="Squirrel" type="Area2D"]
+script = ExtResource("1_mrhax")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6shud")
+frame_progress = 0.395914
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_inqfv")
