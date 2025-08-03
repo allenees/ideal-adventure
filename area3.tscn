@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlecrr4i8un8e"]
+[gd_scene load_steps=13 format=3 uid="uid://dlecrr4i8un8e"]
 
 [ext_resource type="PackedScene" uid="uid://4f7xcgxce64c" path="res://player.tscn" id="1_62fpu"]
 [ext_resource type="Script" uid="uid://qu53l8kn2co2" path="res://area3.gd" id="1_t78u7"]
+[ext_resource type="Texture2D" uid="uid://dfy70w3ypj0dm" path="res://art/scene3.jpg" id="2_s16gk"]
 [ext_resource type="Script" uid="uid://b1m1dlpvk7ahg" path="res://to_area_2_from_3.gd" id="3_t78u7"]
 [ext_resource type="PackedScene" uid="uid://dvceqns6wldpg" path="res://squirrel.tscn" id="4_hn7vt"]
 [ext_resource type="PackedScene" uid="uid://2pvwr0o3ubfo" path="res://rabbit.tscn" id="5_s16gk"]
@@ -9,16 +10,43 @@
 [sub_resource type="LabelSettings" id="LabelSettings_3ubfp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hn7vt"]
-size = Vector2(1920, 40)
+size = Vector2(493, 40)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s16gk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tjtdi"]
+size = Vector2(17.5104, 20)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tjtdi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tis1p"]
+size = Vector2(17.5104, 20)
 
 [node name="Area3" type="Node"]
 script = ExtResource("1_t78u7")
 
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_s16gk")
+
 [node name="StartPosition" type="Marker2D" parent="."]
-position = Vector2(960, 80)
+position = Vector2(1360, 100)
 
 [node name="Player" parent="." instance=ExtResource("1_62fpu")]
-position = Vector2(960, 80)
+position = Vector2(1360, 100)
 
 [node name="CoinCount" type="Label" parent="."]
 offset_left = 16.0
@@ -30,6 +58,7 @@ label_settings = SubResource("LabelSettings_3ubfp")
 metadata/_edit_use_anchors_ = true
 
 [node name="Health" type="Label" parent="."]
+visible = false
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 86.0
@@ -42,10 +71,11 @@ position = Vector2(960, 0)
 script = ExtResource("3_t78u7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ToArea2From3"]
+position = Vector2(357.5, 0)
 shape = SubResource("RectangleShape2D_hn7vt")
 
 [node name="Squirrel" parent="." instance=ExtResource("4_hn7vt")]
-position = Vector2(1258, 202)
+position = Vector2(1100, 202)
 
 [node name="SquirrelLocation" type="Marker2D" parent="Squirrel"]
 
@@ -53,6 +83,28 @@ position = Vector2(1258, 202)
 position = Vector2(677, 716)
 
 [node name="RabbitLocation" type="Marker2D" parent="Rabbit"]
+
+[node name="North Trees" type="StaticBody2D" parent="."]
+position = Vector2(480, 100)
+scale = Vector2(0.241679, 0.703872)
+physics_material_override = SubResource("PhysicsMaterial_s16gk")
+
+[node name="Sprite2D" type="Sprite2D" parent="North Trees"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="North Trees"]
+position = Vector2(-95.4999, 0)
+scale = Vector2(200, 10)
+shape = SubResource("RectangleShape2D_tjtdi")
+
+[node name="West Trees" type="StaticBody2D" parent="."]
+position = Vector2(1820, 540)
+physics_material_override = SubResource("PhysicsMaterial_tjtdi")
+
+[node name="Sprite2D" type="Sprite2D" parent="West Trees"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="West Trees"]
+scale = Vector2(10, 54)
+shape = SubResource("RectangleShape2D_tis1p")
 
 [connection signal="body_entered" from="ToArea2From3" to="ToArea2From3" method="_on_body_entered"]
 [connection signal="body_exited" from="ToArea2From3" to="ToArea2From3" method="_on_body_exited"]

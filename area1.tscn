@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bn8k6mpau813g"]
+[gd_scene load_steps=10 format=3 uid="uid://bn8k6mpau813g"]
 
 [ext_resource type="Script" uid="uid://dam35fo78rp7e" path="res://area1.gd" id="1_mxcsi"]
 [ext_resource type="Script" uid="uid://cm3dffbpnkj2k" path="res://to_area_2_from_1.gd" id="2_gipmx"]
@@ -11,6 +11,10 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p2kkb"]
 radius = 16.0
 height = 248.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jtwhn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jtwhn"]
 
 [node name="Area1" type="Node"]
 script = ExtResource("1_mxcsi")
@@ -34,7 +38,7 @@ scale = Vector2(0.998943, 1)
 texture = ExtResource("5_jtwhn")
 
 [node name="PositionFromArea2" type="Marker2D" parent="."]
-position = Vector2(1870, 540)
+position = Vector2(1770, 540)
 
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(0, 540)
@@ -52,6 +56,7 @@ label_settings = SubResource("LabelSettings_h2yge")
 metadata/_edit_use_anchors_ = true
 
 [node name="Health" type="Label" parent="."]
+visible = false
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 86.0
@@ -71,6 +76,16 @@ shape = SubResource("CapsuleShape2D_p2kkb")
 position = Vector2(1531, 692)
 
 [node name="RabbitLocation" type="Marker2D" parent="Rabbit"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(960, 150)
+physics_material_override = SubResource("PhysicsMaterial_jtwhn")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+scale = Vector2(95, 15)
+shape = SubResource("RectangleShape2D_jtwhn")
 
 [connection signal="body_entered" from="ToArea2From1" to="ToArea2From1" method="_on_body_entered"]
 [connection signal="body_exited" from="ToArea2From1" to="ToArea2From1" method="_on_body_exited"]
