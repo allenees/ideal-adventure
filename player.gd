@@ -37,10 +37,19 @@ func _process(delta):
 		
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
+	
+	if velocity.x < 0:
+		$AnimatedSprite2D.animation = "left"
+	elif velocity.x > 0:
+		$AnimatedSprite2D.animation = "right"
+	elif velocity.y < 0:
+		$AnimatedSprite2D.animation = "up"
+	elif velocity.y > 0:
+		$AnimatedSprite2D.animation = "down"
 
 
 func _on_body_entered(body: Node2D) -> void:
-	
+		
 	Global.next_spawn_point_name = "RPG"
 	get_tree().change_scene_to_file("res://RPG.tscn")
 
@@ -51,9 +60,7 @@ func start(pos):
 	$CollisionShape2D.disabled = false
 
 func set_coin(new_coin_count: int) -> void:
-	print("here 1")
 	coin_counter = new_coin_count
-	print("here 2")
 	coin_label.text = "Coin Count: " + str(coin_counter)
 	
 
