@@ -27,7 +27,9 @@ script = ExtResource("1_mrhax")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6shud")
-frame_progress = 0.395914
+frame_progress = 0.531143
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_inqfv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

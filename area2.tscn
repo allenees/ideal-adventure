@@ -62,8 +62,12 @@ shape = SubResource("RectangleShape2D_r3non")
 [node name="Robin" parent="." instance=ExtResource("6_kk0cs")]
 position = Vector2(694, 955)
 
+[node name="RobinLocation" type="Marker2D" parent="Robin"]
+
 [node name="Squirrel" parent="." instance=ExtResource("5_gwfv5")]
 position = Vector2(368, 804)
+
+[node name="SquirrelLocation" type="Marker2D" parent="Squirrel"]
 
 [connection signal="body_entered" from="ToArea1" to="ToArea1" method="_on_body_entered"]
 [connection signal="body_exited" from="ToArea1" to="ToArea1" method="_on_body_exited"]

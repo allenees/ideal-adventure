@@ -1,18 +1,37 @@
-[gd_scene load_steps=7 format=3 uid="uid://bn8k6mpau813g"]
+[gd_scene load_steps=8 format=3 uid="uid://bn8k6mpau813g"]
 
 [ext_resource type="Script" uid="uid://dam35fo78rp7e" path="res://area1.gd" id="1_mxcsi"]
 [ext_resource type="Script" uid="uid://cm3dffbpnkj2k" path="res://to_area_2_from_1.gd" id="2_gipmx"]
 [ext_resource type="PackedScene" uid="uid://4f7xcgxce64c" path="res://player.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://2pvwr0o3ubfo" path="res://rabbit.tscn" id="4_kbmuc"]
+[ext_resource type="Texture2D" uid="uid://drp5nnauhl6s0" path="res://art/scene1.jpg" id="5_jtwhn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_h2yge"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p2kkb"]
 radius = 16.0
-height = 1080.0
+height = 248.0
 
 [node name="Area1" type="Node"]
 script = ExtResource("1_mxcsi")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.998943, 1)
+texture = ExtResource("5_jtwhn")
 
 [node name="PositionFromArea2" type="Marker2D" parent="."]
 position = Vector2(1870, 540)
@@ -49,6 +68,8 @@ shape = SubResource("CapsuleShape2D_p2kkb")
 
 [node name="Rabbit" parent="." instance=ExtResource("4_kbmuc")]
 position = Vector2(1531, 692)
+
+[node name="RabbitLocation" type="Marker2D" parent="Rabbit"]
 
 [connection signal="body_entered" from="ToArea2From1" to="ToArea2From1" method="_on_body_entered"]
 [connection signal="body_exited" from="ToArea2From1" to="ToArea2From1" method="_on_body_exited"]

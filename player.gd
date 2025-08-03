@@ -7,10 +7,13 @@ var screen_size # Size of the game window.
 var health = 5
 @onready var health_label = $"../Health"
 var coin_counter = 0
-@onready var coin_label = $CoinCount
+@onready var coin_label = $"../CoinCount"
 
 func _ready():
 	screen_size = get_viewport_rect().size
+	coin_counter = Global.coin_count
+	Global.currentScene = get_tree().current_scene.scene_file_path
+	set_coin(coin_counter)
 	
 		
 	#hide()
@@ -48,9 +51,10 @@ func start(pos):
 	$CollisionShape2D.disabled = false
 
 func set_coin(new_coin_count: int) -> void:
+	print("here 1")
 	coin_counter = new_coin_count
+	print("here 2")
 	coin_label.text = "Coin Count: " + str(coin_counter)
-	Global.coin_count = new_coin_count
 	
 
 func set_health(new_health: int) -> void:

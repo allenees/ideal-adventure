@@ -1,3 +1,9 @@
-[gd_scene format=3 uid="uid://cpa5g5gloldhm"]
+[gd_scene load_steps=2 format=3 uid="uid://cpa5g5gloldhm"]
+
+[ext_resource type="Script" uid="uid://bi0y75ujxgc2o" path="res://rpg.gd" id="1_h4wyr"]
 
 [node name="RPG" type="Node"]
+script = ExtResource("1_h4wyr")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0

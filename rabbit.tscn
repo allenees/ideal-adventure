@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://2pvwr0o3ubfo"]
+[gd_scene load_steps=7 format=3 uid="uid://2pvwr0o3ubfo"]
 
 [ext_resource type="Script" uid="uid://dnodqotj5xrjv" path="res://rabbit.gd" id="1_bmu3n"]
 [ext_resource type="Texture2D" uid="uid://bf6rntft5uhv3" path="res://art/rabbit_1.png" id="2_bmu3n"]
@@ -22,6 +22,16 @@ animations = [{
 radius = 66.0
 height = 132.0
 
+[sub_resource type="GDScript" id="GDScript_bmu3n"]
+script/source = "extends CollisionShape2D
+
+func _on_body_entered(body: Node2D) -> void:
+	#get_tree().change_scene_to_file(\"res://area2.tscn\")
+	
+	Global.next_spawn_point_name = \"RabbitLocation\" #current location
+	get_tree().change_scene_to_file(\"res://RPG.tscn\")
+"
+
 [node name="Rabbit" type="Area2D"]
 script = ExtResource("1_bmu3n")
 
@@ -31,3 +41,6 @@ frame_progress = 0.864961
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_msxim")
+script = SubResource("GDScript_bmu3n")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
